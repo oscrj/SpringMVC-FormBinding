@@ -9,30 +9,25 @@ import static ecutb.springmvcformbinding.constants.regex.RegexPattern.*;
 
 public class CustomerFormDto {
 
-    @NotBlank(message = "Email field is required")
+    @NotBlank(message = EMAIL_REQUIRED)
     @Email(
             regexp = EMAIL_REGEX_PATTERN,
             flags = Pattern.Flag.CASE_INSENSITIVE,
             message = EMAIL_FORMAT_MESSAGE
     )
     private String email;
-
     private String address;
-
     @Pattern(regexp = CITY_VALIDATION_PATTERN,
             flags = Pattern.Flag.CASE_INSENSITIVE,
             message = VALID_CITY_NAME)
 
     private String city;
-
     @Pattern(regexp = SWEDISH_ZIPCODE_PATTERN,
             message = SWEDISH_ZIPCODE_FORMAT)
     private String zipCode;
-
     @Pattern(regexp = SWEDISH_PHONE_NUMBER_PATTERN,
             message = PHONE_FORMAT_MESSAGE)
     private String homePhone;
-
     @Pattern(regexp = SWEDISH_CELLPHONE_NUMBER,
             message = CELLPHONE_FORMAT_MESSAGE)
     private String cellPhone;
@@ -83,5 +78,19 @@ public class CustomerFormDto {
 
     public void setCellPhone(String cellPhone) {
         this.cellPhone = cellPhone;
+    }
+
+    public String checkCityIsEmpty(String city){
+        if(city.isEmpty()){
+            return this.city = "Unknown";
+        }
+        return this.city;
+    }
+
+    public String checkAddressIsEmpty(String address){
+        if(address.isEmpty()){
+            return this.address  = "Unknown";
+        }
+        return this.address;
     }
 }

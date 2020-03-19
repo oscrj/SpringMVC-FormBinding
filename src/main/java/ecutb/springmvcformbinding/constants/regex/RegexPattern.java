@@ -1,7 +1,6 @@
 package ecutb.springmvcformbinding.constants.regex;
 
 public class RegexPattern {
-
     public static final String EMAIL_REGEX_PATTERN = "^(\\D)+(\\w)*((\\.(\\w)+)?)+@(\\D)+(\\w)*((\\.(\\D)+(\\w)*)+)?(\\.)[a-z]{2,}$";
     public static final String CITY_VALIDATION_PATTERN = "^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$";
     public static final String SWEDISH_ZIPCODE_PATTERN = "^\\d{3}\\s*\\d{2}$";

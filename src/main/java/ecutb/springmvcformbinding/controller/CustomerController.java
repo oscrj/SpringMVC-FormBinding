@@ -51,8 +51,8 @@ public class CustomerController {
         }
 
         Customer newCustomer = new Customer(customerFormDto.getEmail(), new CustomerDetails(
-                customerFormDto.getAddress(),
-                customerFormDto.getCity(),
+                customerFormDto.checkAddressIsEmpty(customerFormDto.getAddress()),
+                customerFormDto.checkCityIsEmpty(customerFormDto.getCity()),
                 customerFormDto.getZipCode(),
                 customerFormDto.getHomePhone(),
                 customerFormDto.getCellPhone()));
