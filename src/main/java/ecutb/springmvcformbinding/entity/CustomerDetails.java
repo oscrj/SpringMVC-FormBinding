@@ -5,15 +5,15 @@ import java.util.UUID;
 
 public class CustomerDetails {
     private String detailsId;
-    private String street;
+    private String address;
     private String zipCode;
     private String city;
     private String homePhone;
     private String cellPhone;
 
-    public CustomerDetails(String street, String zipCode, String city, String homePhone, String cellPhone) {
+    public CustomerDetails(String address, String zipCode, String city, String homePhone, String cellPhone) {
         this.detailsId = UUID.randomUUID().toString();
-        this.street = street;
+        this.address = address;
         this.zipCode = zipCode;
         this.city = city;
         this.homePhone = homePhone;
@@ -26,12 +26,12 @@ public class CustomerDetails {
         return detailsId;
     }
 
-    public String getStreet() {
-        return street;
+    public String getAddress() {
+        return address;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getZipCode() {
@@ -72,7 +72,7 @@ public class CustomerDetails {
         if (o == null || getClass() != o.getClass()) return false;
         CustomerDetails that = (CustomerDetails) o;
         return Objects.equals(detailsId, that.detailsId) &&
-                Objects.equals(street, that.street) &&
+                Objects.equals(address, that.address) &&
                 Objects.equals(zipCode, that.zipCode) &&
                 Objects.equals(city, that.city) &&
                 Objects.equals(homePhone, that.homePhone) &&
@@ -81,14 +81,14 @@ public class CustomerDetails {
 
     @Override
     public int hashCode() {
-        return Objects.hash(detailsId, street, zipCode, city, homePhone, cellPhone);
+        return Objects.hash(detailsId, address, zipCode, city, homePhone, cellPhone);
     }
 
     @Override
     public String toString() {
         return "CustomerDetails{" +
                 "detailsId='" + detailsId + '\'' +
-                ", street='" + street + '\'' +
+                ", street='" + address + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 ", city='" + city + '\'' +
                 ", homePhone='" + homePhone + '\'' +

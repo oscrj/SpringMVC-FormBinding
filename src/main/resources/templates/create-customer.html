@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/Create-Customers.css}"/>
+    <meta charset="UTF-8">
+    <title>Create New Customer</title>
+</head>
+<body>
+<div class="nav-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" th:href="@{/customers}">Customers</a>
+        </div>
+        <a class="navbar-brand" th:href="@{/customer/create}">Create New Customer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+</div>
+
+<div class="page-wrapper">
+    <div class="container">
+        <form th:action="@{/customer/process}" th:object="${customer}" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="email..." th:field="*{email}">
+                </div>
+            </div>
+            <div class="form-row col-mid-6">
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="address..." th:field="*{address}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" id="inputCity" th:field="*{city}">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="number" step="1" th:default="00000" class="form-control" id="inputZip" th:field="*{zipCode}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="homeNumber">Home phone</label>
+                    <input type="tel" class="form-control" id="homeNumber" th:field="*{homePhone}">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="cellNumber">Cell phone</label>
+                    <input type="tel" class="form-control" id="cellNumber" th:field="*{cellPhone}">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-secondary">Create</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -10,17 +10,18 @@ public class Customer {
     private String customerId;
     private String email;
     private LocalDate regDate;
+    private boolean active;
     private CustomerDetails customerDetails;
 
-    public Customer(String email, LocalDate regDate, CustomerDetails customerDetails) {
+    public Customer(String email, CustomerDetails customerDetails) {
         this.customerId = UUID.randomUUID().toString();
-        setEmail(email);
-        setRegDate(regDate);
+        this.email = email;
+        this.active = true;
+        this.regDate = LocalDate.now();
         this.customerDetails = customerDetails;
     }
 
-    public Customer() {
-    }
+    public Customer() {}
 
     public String getCustomerId() {
         return customerId;
@@ -35,11 +36,15 @@ public class Customer {
     }
 
     public String getRegDate() {
-        return regDate.format(DateTimeFormatter.ofPattern("dd MM yyyy")).toString();
+        return regDate.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"));
     }
 
-    public void setRegDate(LocalDate regDate) {
-        this.regDate = LocalDate.now();
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public CustomerDetails getCustomerDetails() {
