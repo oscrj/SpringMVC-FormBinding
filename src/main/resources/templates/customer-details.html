@@ -24,18 +24,20 @@
             <table class="table">
                 <thead>
                 <tr>
+                    <th scope="col">DetailsId</th>
                     <th scope="col">Address</th>
-                    <th scope="col">City</th>
                     <th scope="col">Zip Code</th>
+                    <th scope="col">City</th>
                     <th scope="col">Home Number</th>
                     <th scope="col">Cellphone Number</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
+                    <td><span th:text="${customer.customerDetails.detailsId}"></span></td>
                     <td><span th:text="${customer.customerDetails.address}"></span></td>
-                    <td><span th:text="${customer.customerDetails.city}"></span></td>
                     <td><span th:text="${customer.customerDetails.zipCode}"></span></td>
+                    <td><span th:text="${customer.customerDetails.city}"></span></td>
                     <td><span th:text="${customer.customerDetails.homePhone}"></span></td>
                     <td><span th:text="${customer.customerDetails.cellPhone}"></span></td>
                 </tr>

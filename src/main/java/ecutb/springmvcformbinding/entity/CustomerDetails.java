@@ -6,16 +6,16 @@ import java.util.UUID;
 public class CustomerDetails {
     private String detailsId;
     private String address;
-    private String zipCode;
     private String city;
+    private String zipCode;
     private String homePhone;
     private String cellPhone;
 
-    public CustomerDetails(String address, String zipCode, String city, String homePhone, String cellPhone) {
+    public CustomerDetails(String address, String city, String zipCode, String homePhone, String cellPhone) {
         this.detailsId = UUID.randomUUID().toString();
         this.address = address;
-        this.zipCode = zipCode;
         this.city = city;
+        this.zipCode = zipCode;
         this.homePhone = homePhone;
         this.cellPhone = cellPhone;
     }

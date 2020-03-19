@@ -1,19 +1,41 @@
 package ecutb.springmvcformbinding.dto;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+import static ecutb.springmvcformbinding.constants.message.ValidationMessage.*;
+import static ecutb.springmvcformbinding.constants.regex.RegexPattern.*;
+
 public class CustomerFormDto {
 
-    //@NotBlank(message = "Email field is required")
+    @NotBlank(message = "Email field is required")
+    @Email(
+            regexp = EMAIL_REGEX_PATTERN,
+            flags = Pattern.Flag.CASE_INSENSITIVE,
+            message = EMAIL_FORMAT_MESSAGE
+    )
     private String email;
 
     private String address;
 
-    private String zipCode;
+    @Pattern(regexp = CITY_VALIDATION_PATTERN,
+            flags = Pattern.Flag.CASE_INSENSITIVE,
+            message = VALID_CITY_NAME)
 
     private String city;
 
+    @Pattern(regexp = SWEDISH_ZIPCODE_PATTERN,
+            message = SWEDISH_ZIPCODE_FORMAT)
+    private String zipCode;
+
+    @Pattern(regexp = SWEDISH_PHONE_NUMBER_PATTERN,
+            message = PHONE_FORMAT_MESSAGE)
     private String homePhone;
 
-    private String CellPhone;
+    @Pattern(regexp = SWEDISH_CELLPHONE_NUMBER,
+            message = CELLPHONE_FORMAT_MESSAGE)
+    private String cellPhone;
 
     public String getEmail() {
         return email;
@@ -56,10 +78,10 @@ public class CustomerFormDto {
     }
 
     public String getCellPhone() {
-        return CellPhone;
+        return cellPhone;
     }
 
     public void setCellPhone(String cellPhone) {
-        CellPhone = cellPhone;
+        this.cellPhone = cellPhone;
     }
 }

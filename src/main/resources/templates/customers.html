@@ -23,13 +23,11 @@
             </div>
         </nav>
     </div>
-
     <div class="page-wrapper">
         <div class="container">
             <div th:if="${customers.isEmpty()}">
-                <p>No users registered</p>
+                <p>No Customers registered</p>
             </div>
-
             <div class="table-container" th:unless="${customers.isEmpty()}">
                 <table class="table">
                     <thead>

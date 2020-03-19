@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.validation.Valid;
 
 @Controller
@@ -34,15 +34,21 @@ public class CustomerController {
     @GetMapping("customer/create")
     public String getForm(Model model){
         CustomerFormDto customerFormDto = new CustomerFormDto();
-        model.addAttribute("customer", customerFormDto);
+        model.addAttribute("customerForm", customerFormDto);
         return "create-customer";
     }
 
     @PostMapping("customer/process")
-    public String create(@Valid @ModelAttribute("form") CustomerFormDto customerFormDto, BindingResult bindingResult){
+    public String create(@Valid @ModelAttribute("customerForm") CustomerFormDto customerFormDto, BindingResult bindingResult){
 
-        
+        if(customerDao.findByEmail(customerFormDto.getEmail()).isPresent()){
+            FieldError error = new FieldError("customerForm", "email", "Email: " +customerFormDto.getAddress()+ " is already defined");
+            bindingResult.addError(error);
+        }
 
+        if(bindingResult.hasErrors()){
+            return "create-customer";
+        }
 
         Customer newCustomer = new Customer(customerFormDto.getEmail(), new CustomerDetails(
                 customerFormDto.getAddress(),
